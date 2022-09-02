@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sender</title>
+  <style>
+    body { padding-top: 50px; }
+  </style>
+</head>
+<body>
+
+  <form id="form">
+    <label for="fname">Input Value</label>
+    <input type="text" id="value" name="value"><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+
+<script>
+  const socket = new WebSocket('ws://localhost:3000/sender_ws');
+
+  function submit(event) {
+    event.preventDefault();
+    socket.send(value.value)
+  }
+
+  const form = document.getElementById('form');
+  const value = document.getElementById('value')
+  form.addEventListener('submit', submit)
+</script>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Receiver</title>
+  <style>
+    body { padding-top: 50px; }
+  </style>
+
+  <script>
+    // Create WebSocket connection.
+    const socket = new WebSocket('ws://localhost:3000/receiver_ws');
+
+    // Listen for messages
+    socket.addEventListener('message', (event) => {
+        document.getElementById("value").value = event.data
+    });
+
+  </script>
+</head>
+<body>
+  <label for="value">Cached Value</label>
+  <input type="text" disabled id="value" name="value"><br>
+</body>
+</html>
